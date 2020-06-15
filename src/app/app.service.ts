@@ -1,5 +1,8 @@
 import { CustomerComponent } from './customer/customer.component';
 import { ProductComponent } from './product/product.component';
+
+import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 
@@ -25,6 +28,8 @@ export class AppService {
     { ProductId: 4, Name: 'ssss', Price: 27 }
     ];
 
+    customerIdEdit: number;
+    
     addCustomer(CustomerId: number, Name: string, Age: number) {
         this.customers.push({ CustomerId: CustomerId, Name: Name, Age: Age });
     }
@@ -51,9 +56,12 @@ export class AppService {
         ])
     }
 
-    getCustomerEdit(customerId: number) {
-        let customer = this.customers.filter(custObj => custObj.CustomerId === customerId);
-        return of(customer[0]);
+    getCustomerEdit(customerId: any) {
+        //let customer = this.customers.filter(custObj => custObj.CustomerId === customerId);
+        //return of(customer[0]);
+
+        this.customerIdEdit = customerId;
+        //console.log(" m        "+this.customerIdEdit);
         // this.customerEditID.CustomerId = customerVM.CustomerId;
         // this.customerEditID.Name = customerVM.Name;
         // this.customerEditID.Age = customerVM.Age;

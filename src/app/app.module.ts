@@ -9,7 +9,7 @@ import { AppService } from './app.service';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
-import { ProductEditComponent } from './product/product-edit/product-edit.component'
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
 @NgModule({
   declarations: [
     AppComponent,

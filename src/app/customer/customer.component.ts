@@ -2,12 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AppService } from '../app.service';
 
 import { NgForm } from '@angular/forms';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css'],
-  providers: [AppService]
+  providers: [AppService,CustomerEditComponent]
 })
 export class CustomerComponent implements OnInit {
   @ViewChild('f',  { static: false }) signupForm: NgForm;
@@ -28,7 +29,7 @@ export class CustomerComponent implements OnInit {
 
 
   customerSet: {CustomerId:number, Name : string, Age : number}[]=[];
-  constructor(private appService : AppService) { }
+  constructor(private appService : AppService,private customerEditComponent : CustomerEditComponent) { }
    customer: any [];
 
   customerVM:any;
@@ -37,6 +38,7 @@ export class CustomerComponent implements OnInit {
     this.customer = this.appService.customers;
   }
   onClick(){
+    this.appService.getCustomerEdit(null);
     this.openCeateCus = true ;
     this.CreateCusId = false ;
   }
@@ -47,8 +49,11 @@ export class CustomerComponent implements OnInit {
     this.CreateCusId = true ;
   
     this.customerVM = {...customerId};
+    let customerID = this.customerVM.CustomerId; 
     console.log(this.customerVM);
-    this.appService.getCustomerEdit(this.customerVM);
+    this.appService.getCustomerEdit(customerId);
+    this.customerEditComponent.ngOnInit1(this.customerVM);
+  
     
     let  T_CusId = this.customerVM.CustomerId;
     let T_Name = this.customerVM.Name;

@@ -3,7 +3,7 @@
         <div class="col-xs-12">
             <p>customer works!</p>
             <hr />
-            <button (click)="onClick()">Create Customer</button>
+            <button (click)="onClick()" routerLink="/customer-edit">Create Customer</button>
             <hr>
             <div>
                 <div class="row">
@@ -13,7 +13,7 @@
                             {{ customer.CustomerId }}
                             {{ customer.Name }}
                             {{ customer.Age }}
-                            <button (click)="onEdit(customer)"  >Edit</button>
+                            <button (click)="onEdit(customer)" routerLink="/customer-edit" >Edit</button>
                         </p>
                     </div>
                    

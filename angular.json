@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Cus"
+    }
+  },
+  "defaultProject": "Cus",
+  "cli": {
+    "analytics": false
+  }
 }
