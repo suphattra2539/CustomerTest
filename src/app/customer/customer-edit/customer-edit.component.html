@@ -1,0 +1,19 @@
+<h3>{{isAddMode ? 'Add' : 'Edit'}}  Customer</h3>
+
+  <div  class="col-xs-20">
+        <div >
+            <div >
+                <label>CustomerId :</label>
+                <input type="number" [(ngModel)]="editCustomer.CustomerId" ><br>
+            </div>
+            <div >
+                <label>Name :</label>
+                <input type="text" [(ngModel)]="editCustomer.Name"><br>
+            </div>
+            <div >
+                <label>Age :</label>
+                <input type="number" [(ngModel)]="editCustomer.Age"><br>
+            </div>
+        </div>
+        <button (click)="onEditCustomet()" [routerLink]="'/customer'" >Submit Edit Customer !</button> 
+</div>

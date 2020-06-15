@@ -1,0 +1,79 @@
+<div class="div">
+    <div class="row">
+        <div class="col-xs-12">
+            <p>Product works!</p>
+            <hr />
+            <button (click)="onClick()">Create Product</button>
+            <hr>
+            <div>
+                <div class="row">
+
+                    <div class="col-xs-6">
+                        <p *ngFor="let productGet of productGet">
+                            {{ productGet.ProductId }}
+                            {{ productGet.Name }}
+                            {{ productGet.Price }}
+                            <button (click)="onEdit(productGet)">Edit</button>
+                        </p>
+                    </div>
+
+                    <div class="col-xs-20">
+                        <div *ngIf="openCeateCus">
+                            <form>
+                                <h3>Edit Product ??</h3>
+                                <div>
+                                    <div>
+                                        <label>ProductId :</label>
+                                        <input type="number" id="ProductVM.ProductId" name="ProductId" [(ngModel)]="ProductVM.ProductId" ><br>
+                                    </div>
+                                    <div>
+                                        <label>Name :</label>
+                                        <input type="text" id="ProductVM.Name" name="Name" [(ngModel)]="ProductVM.Name"><br>
+                                    </div>
+                                    <div>
+                                        <label>Price :</label>
+                                        <input type="number" id="ProductVM.Price" name="Price"  [(ngModel)]="ProductVM.Price"><br>
+                                    </div>
+                                   
+                                </div>
+                                <button class="btn btn-danger" (click)="onEditProduct()">Submit Edit Product
+                                    !</button>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div *ngIf="CreateCusId" class="form-group" class="col-xs-20">
+                        <form (ngSubmit)="onClickSubmit(f)" #f="ngForm">
+                            <div class="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+                                <div class="form-group">
+                                    <label>ProductId :</label>
+                                    <input type="number" id="ProductId" class="from-control" ngModel name="ProductId"
+                                        required><br>
+                                </div>
+                                <div class="form-group">
+                                    <label>Name :</label>
+                                    <input type="text" id="Name" class="from-control" ngModel name="Name" required><br>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Price :</label>
+                                    <input type="number" id="Price" class="from-control" ngModel name="Price" required><br>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
+                                Submit Create Product !
+                            </button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+
+
+        </div>
+    </div>
+</div>
