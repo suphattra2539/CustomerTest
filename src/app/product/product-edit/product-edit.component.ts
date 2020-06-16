@@ -15,32 +15,29 @@ export class ProductEditComponent implements OnInit {
   producrId : any ;
   
   productEdit : Product;
-  getProductCheckId;
+  product : Product;
 
   constructor(private appService: AppService,
               private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getProductCheckId = this.appService.products;
     let queryParam = this.activeRoute.snapshot.queryParams;
     this.isAddMode = queryParam == null || queryParam.id == 0;
     this.producrId = +queryParam.id;
 
     let result = this.appService.getProductEdit(this.producrId);
     if(result != null){
-      this.producrId = result;
+      this.product = result;
       this.productEdit = {...result};
-      console.log(this.productEdit);
     }else{
-      this.producrId = new Product();
+      this.product = new Product();
     }
   }
   onEditProduct() {
     this.appService.updateProduct(this.productEdit.ProductId ,this.productEdit.Name , this.productEdit.Price);
   }
-  onClickSubmit(form : NgForm) {
-    this.appService.addProduct(this.signupForm.value.userData.Name , this.signupForm.value.userData.Price);
-    this.signupForm.reset();
+  onClickSubmit() {
+    this.appService.addProduct(this.product.Name , this.product.Price);
   }
 
 }

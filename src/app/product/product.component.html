@@ -4,9 +4,9 @@
         <div class="div">
             <div class="row">
                 <div class="col-xs-12">
-                    <p>Product works!</p>
+                    <h3>Product works!</h3>
                     <hr />
-                    <button routerLink="/product-edit" [queryParams]="{ id: '0' }">Create Product</button>
+                    <button routerLink="/product-edit" [queryParams]="{ id: '0' }" class="btn btn-light">Create Product</button>
                     <hr>
                     <div>
                         <div class="row">
@@ -16,8 +16,8 @@
                                     {{ productGet.ProductId }}
                                     {{ productGet.Name }}
                                     {{ productGet.Price }}
-                                    <button routerLink="/product-edit"
-                                        [queryParams]="{ id: productGet.ProductId }">Edit</button>
+                                    <button  routerLink="/product-edit"
+                                        [queryParams]="{ id: productGet.ProductId }" class="btn btn-danger">Edit</button>
                                 </p>
                             </div>
                         </div>

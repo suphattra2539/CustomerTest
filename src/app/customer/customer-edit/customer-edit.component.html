@@ -1,51 +1,28 @@
 
-        <div class="col-ms-12">
-            <h3>{{isAddMode ? 'Add' : 'Edit'}} Customer</h3>
+<h3>{{isAddMode ? 'Add' : 'Edit'}} Customer</h3>
 
-<div class="col-xs-20">
-    <form (ngSubmit)="onClickSubmit(f)" #f="ngForm">
-        <div class="user-data" ngModelGroup="userData" #userData="ngModelGroup">
-            <div>
-                <label *ngIf="customerId != 0">CustomerID : {{ customerEdit.customerId }}</label><br>
-            </div>
-            <div class="form-group">
-                <label>Name :</label>
-                <input *ngIf="customerId == 0"  type="text" id="Name" class="from-control" ngModel name="Name" required><br>
-
-            </div>
-            <div class="form-group">
-                <label>Age :</label>
-                <input *ngIf="customerId == 0"  type="number" id="Age" class="from-control" ngModel name="Age" required><br>
-            </div>
-        </div>
-        <button *ngIf="customerId == 0"  class="btn btn-primary" type="submit" [disabled]="!f.valid"  >
-            Submit Create Customer !
-        </button>
-        <button  class="btn btn-primary"  [routerLink]="'/customer'">Black Customer List</button>
-
-    </form>
-   
-</div>
-<div *ngIf="!isAddMode">
+<div >
     <div>
         <div>
             <label>CustomerId :</label>
-            
+            <label *ngIf="customerId != 0">{{customerEdit.customerId}}</label>
         </div>
         <div>
             <label>Name :</label>
-            <input type="text" [(ngModel)]="customerEdit.Name"><br>
+            <input  *ngIf="customerId != 0" type="text" [(ngModel)]="customerEdit.Name">
+            <input *ngIf="customerId == 0"  type="text" [(ngModel)]="customer.Name" required><br>
         </div>
         <div>
             <label>Age :</label>
-            <input type="number" [(ngModel)]="customerEdit.Age"><br>
+            <input  *ngIf="customerId != 0" type="number" [(ngModel)]="customerEdit.Age">
+            <input *ngIf="customerId == 0"  type="number"[(ngModel)]="customer.Age" required><br>
         </div>
     </div>
-    <button class="btn btn-danger" (click)="onEditCustomet()">Submit Edit Customer !</button>
-    <button routerLink="/customer">Customer</button>
+    <button  *ngIf="customerId != 0" class="btn btn-danger" (click)="onEditCustomet()">Submit Edit Customer !</button>
+    <button *ngIf="customerId == 0"  class="btn btn-primary" (click)="onClickSubmit()" >
+        Submit Create Customer !
+    </button>
+    &nbsp;
+    <button routerLink="/customer" class="btn btn-dark">Customer</button>
 
 </div> 
-{{  customerEdit | json}}
-<hr/>
-{{  getCustomerCheckMax | json}}
-        </div>

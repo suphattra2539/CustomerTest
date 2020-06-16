@@ -1,28 +1,25 @@
-<div class="col-md-12">
-    <div class="div" >
-        <div class="row">
-            <div class="col-xs-12">
-                <p>customer works!</p>
-                <hr />
-                <button routerLink="/customer-edit" [queryParams]="{ id: '0'}">Create Customer</button>
-                <hr>
-                <div>
-                    <div class="row">
+<div class="div">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>customer works!</h3>
+            <hr />
+                <button routerLink="/customer-edit" [queryParams]="{ id: '0'}" class="btn btn-light">Create Customer</button>
+            <hr>
+            <div>
+                <div class="row">
 
-                        <div class="col-xs-6">
-                            <p *ngFor="let customer of customers">
-                                {{ customer.customerId }}
-                                {{ customer.Name }}
-                                {{ customer.Age }}
-                                <button routerLink="/customer-edit" class="btn btn-danger"
-                                    [queryParams]="{ id: customer.customerId }">Edit</button>
-                                    <button (click)="onDeleteCustomer(customer.customerId)">Delete Customer</button>
-                            </p>
-                        </div>
+                    <div class="col-xs-6">
+                        <p *ngFor="let customer of customers">
+                            {{ customer.customerId }}
+                            {{ customer.Name }}
+                            {{ customer.Age }}
+                            <button routerLink="/customer-edit" class="btn btn-warning"
+                                [queryParams]="{ id: customer.customerId }">Edit</button>
+                            <button (click)="onDeleteCustomer(customer)" class="btn btn-danger">Delete Customer</button>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{ customers  | json}}
 </div>

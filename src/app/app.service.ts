@@ -73,6 +73,13 @@ export class AppService {
         console.log('service' + product);
         return product[0];
     }
+    getDeleteCustomer(custometDelete:number){
+        for (let i = 0; i < this.customers.length; i++) {
+            if (this.customers[i].customerId == custometDelete) {
+                  this.customers.splice(i,1);
+            }
+        }
+    }
     getProduct() {
         return of([{ ProductId: 1, Name: 'cccc', Price: 23 },
         { ProductId: 2, Name: 'xxxx', Price: 30 },

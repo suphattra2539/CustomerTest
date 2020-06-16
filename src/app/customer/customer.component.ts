@@ -12,7 +12,8 @@ export class CustomerComponent implements OnInit {
   ngOnInit(){
     this.customers = this.appService.customers;
   }
-  onDeleteCustomer(){
-    
+  onDeleteCustomer(customer : any){
+    let customerDelete = {...customer};
+    this.appService.getDeleteCustomer(customerDelete.customerId);
   }
 }
