@@ -13,18 +13,15 @@ export class ProductEditComponent implements OnInit {
   @ViewChild('f', { static: false }) signupForm: NgForm;
   public isAddMode: boolean = false;
   producrId : any ;
-  ProductVM: Product;
   
   productEdit : Product;
-  productCreate : Product ;
+  getProductCheckId;
 
   constructor(private appService: AppService,
               private activeRoute: ActivatedRoute) { }
-  getProductCheckId;
+
   ngOnInit() {
-
     this.getProductCheckId = this.appService.products;
-
     let queryParam = this.activeRoute.snapshot.queryParams;
     this.isAddMode = queryParam == null || queryParam.id == 0;
     this.producrId = +queryParam.id;
@@ -38,23 +35,11 @@ export class ProductEditComponent implements OnInit {
       this.producrId = new Product();
     }
   }
- 
   onEditProduct() {
     this.appService.updateProduct(this.productEdit.ProductId ,this.productEdit.Name , this.productEdit.Price);
-
   }
   onClickSubmit(form : NgForm) {
-    let test = this.appService.products;
-    let max = 0 ;
-    for(let i = 0 ;i < test.length ; i++){
-      let numId = test[i].ProductId;
-      let numGet = numId;
-        if(max < numGet){
-            max = numGet ;
-        }
-    }
-    max = max+1;
-    this.appService.addProduct( max,this.signupForm.value.userData.Name , this.signupForm.value.userData.Price);
+    this.appService.addProduct(this.signupForm.value.userData.Name , this.signupForm.value.userData.Price);
     this.signupForm.reset();
   }
 

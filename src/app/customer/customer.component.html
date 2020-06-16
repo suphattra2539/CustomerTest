@@ -1,5 +1,5 @@
 <div class="col-md-12">
-    <div class="div">
+    <div class="div" >
         <div class="row">
             <div class="col-xs-12">
                 <p>customer works!</p>
@@ -16,6 +16,7 @@
                                 {{ customer.Age }}
                                 <button routerLink="/customer-edit" class="btn btn-danger"
                                     [queryParams]="{ id: customer.customerId }">Edit</button>
+                                    <button (click)="onDeleteCustomer(customer.customerId)">Delete Customer</button>
                             </p>
                         </div>
                     </div>
