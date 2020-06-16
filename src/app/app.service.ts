@@ -5,47 +5,61 @@ import { CustomerEditComponent } from './customer/customer-edit/customer-edit.co
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { Customer } from './models/customer';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class AppService {
 
-    customers = [{ CustomerId: 1, Name: 'Soo', Age: 23 },
-    { CustomerId: 2, Name: 'Ton', Age: 30 },
-    { CustomerId: 3, Name: 'Fai', Age: 27 },
-    { CustomerId: 4, Name: 'Ban', Age: 27 }
+    constructor(){
+        console.log('AppService create')
+    }
+
+    customers: Customer[] = [
+        { customerId: 1, Name: 'Soo', Age: 23 },
+        { customerId: 2, Name: 'Ton', Age: 30 },
+        { customerId: 3, Name: 'Fai', Age: 27 },
+        { customerId: 4, Name: 'Ban', Age: 27 }
     ];
 
-    customerEditID: {
-        CustomerId: 0,
-        Name: '',
-        Age: 0
-    };
-
-
-    productService = [{ ProductId: 1, Name: 'cccc', Price: 23 },
+    products = [{ ProductId: 1, Name: 'cccc', Price: 23 },
     { ProductId: 2, Name: 'xxxx', Price: 30 },
     { ProductId: 3, Name: 'ffff', Price: 27 },
     { ProductId: 4, Name: 'ssss', Price: 27 }
     ];
 
     customerIdEdit: number;
-    
+
     addCustomer(CustomerId: number, Name: string, Age: number) {
-        this.customers.push({ CustomerId: CustomerId, Name: Name, Age: Age });
+        this.customers.push({ customerId: CustomerId, Name: Name, Age: Age });
     }
     updateCustomer(CustomerId: number, Name: string, Age: number) {
-        let customerID = CustomerId - 1;
-        this.customers[customerID].Name = Name;
-        this.customers[customerID].Age = Age;
+        let getCustomer = this.customers;
+        let numEdit = 0;
+        for(let i = 0 ; i < getCustomer.length ; i++){
+            if(getCustomer[i].customerId == CustomerId ){
+                numEdit = i;
+            }
+        }
+        this.customers[numEdit].Name = Name;
+        this.customers[numEdit].Age = Age;
     }
 
     addProduct(ProductId: number, Name: string, Price: number) {
-        this.productService.push({ ProductId: ProductId, Name: Name, Price: Price });
+        this.products.push({ ProductId: ProductId, Name: Name, Price: Price });
     }
     updateProduct(ProductId: number, Name: string, Price: number) {
-        //  let productId = ProductId-1;
-        this.productService[ProductId].Name = Name;
-        this.productService[ProductId].Price = Price;
+        let getProduct = this.products;
+        let numEdit = 0;
+        for(let i = 0 ; i < getProduct.length ; i++){
+            if(getProduct[i].ProductId == ProductId ){
+                numEdit = i;
+            }
+        }
+        this.products[numEdit].Name = Name;
+        this.products[numEdit].Price = Price;
+           
     }
 
     getProduct() {
@@ -57,17 +71,13 @@ export class AppService {
     }
 
     getCustomerEdit(customerId: any) {
-        //let customer = this.customers.filter(custObj => custObj.CustomerId === customerId);
-        //return of(customer[0]);
-
-        this.customerIdEdit = customerId;
-        //console.log(" m        "+this.customerIdEdit);
-        // this.customerEditID.CustomerId = customerVM.CustomerId;
-        // this.customerEditID.Name = customerVM.Name;
-        // this.customerEditID.Age = customerVM.Age;
-
-        // console.log(this.customerEditID.CustomerId );
-        // console.log(this.customerEditID.Name);
-        // console.log(this.customerEditID.Age );
+        let customer = this.customers.filter(custObj => custObj.customerId === customerId);
+        console.log('service'+ customer );
+        return customer[0];
+    }
+    getProductEdit(productId: any) {
+        let product = this.products.filter(custObj => custObj.ProductId === productId);
+        console.log('service'+ product );
+        return product[0];
     }
 }

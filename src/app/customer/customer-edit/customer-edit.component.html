@@ -1,33 +1,15 @@
 
+        <div class="col-ms-12">
+            <h3>{{isAddMode ? 'Add' : 'Edit'}} Customer</h3>
 
-  <div *ngIf="editCustomer2.CustomerId === null"  class="col-xs-20">
-      <p>Update Customer</p>
-        <div >
-            <div >
-                <label>CustomerId :</label>
-                <input type="number" [(ngModel)]="customerId.CustomerId" ><br>
-            </div>
-            <div >
-                <label>Name :</label>
-                <input type="text" [(ngModel)]="customerId.Name"><br>
-            </div>
-            <div >
-                <label>Age :</label>
-                <input type="number" [(ngModel)]="customerId.Age"><br>
-            </div>
-        </div>
-        <button (click)="onEditCustomet()" [routerLink]="'/customer'" >Submit Edit Customer !</button> 
-  
-</div>
-<div *ngIf="editCustomer2.CustomerId !== null">
+<div *ngIf="isAddMode" class="col-xs-20">
     <p>Cearte Customer</p>
     <form (ngSubmit)="onClickSubmit(f)" #f="ngForm">
         <div class="user-data" ngModelGroup="userData" #userData="ngModelGroup">
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>CustomerId :</label>
-                <input type="number" id="CustomerId" class="from-control" ngModel name="CustomerId"
-                    required><br>
-            </div>
+                <input type="number" id="customerId" class="from-control" ngModel name="customerId" required><br>
+            </div> -->
             <div class="form-group">
                 <label>Name :</label>
                 <input type="text" id="Name" class="from-control" ngModel name="Name" required><br>
@@ -38,9 +20,35 @@
                 <input type="number" id="Age" class="from-control" ngModel name="Age" required><br>
             </div>
         </div>
-        <button class="btn btn-primary" type="submit" [disabled]="!f.valid" routerLink="/customer">
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid"  >
             Submit Create Customer !
         </button>
+        <button  class="btn btn-primary"  [routerLink]="'/customer'">Black Customer List</button>
 
     </form>
+   
 </div>
+<div *ngIf="!isAddMode">
+    <p>Update Customer</p>
+    <div>
+        <div>
+            <label>CustomerId :</label>
+            <label>{{ customerEdit.customerId }}</label><br>
+        </div>
+        <div>
+            <label>Name :</label>
+            <input type="text" [(ngModel)]="customerEdit.Name"><br>
+        </div>
+        <div>
+            <label>Age :</label>
+            <input type="number" [(ngModel)]="customerEdit.Age"><br>
+        </div>
+    </div>
+    <button class="btn btn-danger" (click)="onEditCustomet()">Submit Edit Customer !</button>
+    <button routerLink="/customer">Customer</button>
+
+</div> 
+{{  customerEdit | json}}
+<hr/>
+{{  getCustomerCheckMax | json}}
+        </div>

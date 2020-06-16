@@ -25,7 +25,7 @@ import { ProductEditComponent } from './product/product-edit/product-edit.compon
     FormsModule,
     
   ],
-  providers: [AppService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,91 +3,68 @@ import { Component, OnInit, ViewChild, Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { Customer } from 'src/app/models/customer';
 @Injectable()
 @Component({
   selector: 'app-customer-edit',
   templateUrl: './customer-edit.component.html',
-  styleUrls: ['./customer-edit.component.css'],
-  providers: [AppService]
+  styleUrls: ['./customer-edit.component.css']
 })
 export class CustomerEditComponent implements OnInit {
-
   @ViewChild('f', { static: false }) signupForm: NgForm;
-  editCustomer2 = {
-    CustomerId: 0,
-    Name: '',
-    Age: 0
-  };
-  createCustomer = {
-    CustomerId :0,
-    Name : '' ,
-    Age: 0 
-  };
-
-  customerSet: { CustomerId: number, Name: string, Age: number }[] = [];
 
   public isAddMode : boolean = false;
   public customerId : any;
 
+  customer : Customer;
+  customerCreate : Customer ;
+  customerEdit : Customer ;
   constructor(private appService: AppService, 
-    private activeRoute: ActivatedRoute) {
+              private activeRoute: ActivatedRoute) {
     // this.activeRoute.params.subscribe((data)=>{
     //   console.log(data);
     // })
-
-    //this.activeRoute.queryParams.subscribe((data) => {
-      //this.isAddMode = data == null || data.id == 0; 
-     // this.customerId = +data.id;
-    //});
-
   }
-
-  ngOnInit() {
-    //this.customerId = this.appService.customerIdEdit;
-    //console.log("data : "+this.appService.customerIdEdit);
-    //subscribe((data) =>{
-    //    console.log("data : "+data);
-    //  });
-    // this.editCustomer.CustomerId = this.customerGet.CustomerId;
-    // this.editCustomer.Name = this.customerGet.Name;
-    // this.editCustomer.Age = this.customerGet.Age;
-    alert('1');
+  getCustomerCheckMax;
+  ngOnInit(){
+    this.getCustomerCheckMax = this.appService.customers;
    
-  }
-  ngOnInit1(customerID : any){
-    alert('2');
-    this.customerId = {...customerID};
-    this.editCustomer2.CustomerId = this.customerId.CustomerId;
-    this.editCustomer2.Name = this.customerId.Name;
-    this.editCustomer2.Age = this.customerId.Age;
-    console.log(this.editCustomer2.CustomerId + "/" + this.editCustomer2.Name + "/"+ this.editCustomer2.Age);
+    let queryParam = this.activeRoute.snapshot.queryParams;
+    // console.log(queryParam);
+    // this.activeRoute.params.subscribe(data =>{
+    //   console.log(data);
+    // })
+    this.isAddMode = queryParam == null || queryParam.id == 0; 
+    this.customerId = +queryParam.id;
+    
+    let result = this.appService.getCustomerEdit(this.customerId);
+    if(result != null){
+      this.customer = result;
+      this.customerEdit = {...result};
+      console.log( this.customerEdit);
+    }else{
+      this.customer = new Customer();
+    }
   }
 
   onEditCustomet() {
-    //updateCustomer
-    //let d = JSON.stringify(this.customer);
-    //console.log(d);
-
-    // let Cusid = this.editCustomer.CustomerId;
-    // let Name: string = this.editCustomer.Name;
-    // let Age: number = this.editCustomer.Age;
-    // alert("Edit Ok");
-
-    // this.appService.updateCustomer(Cusid, Name, Age);
-    // this.editCustomer.CustomerId = 0;
-    // this.editCustomer.Name = '';
-    // this.editCustomer.Age = 0;
-
-    // this.CreateCusId = false;
+     this.appService.updateCustomer(this.customerEdit.customerId, this.customerEdit.Name, this.customerEdit.Age);
   }
   
   onClickSubmit(form : NgForm){
-    // console.log(this.signupForm);
-    // this.createCustomer.CustomerId =  this.signupForm.value.userData.CustomerId;
-    // this.createCustomer.Name =  this.signupForm.value.userData.Name;
-    // this.createCustomer.Age =  this.signupForm.value.userData.Age;
-    //this.customerConponent.onCearte2(this.createCustomer);
+   // console.log("/////"+this.signupForm);
+    let test = this.appService.customers;
+    let max = 0 ;
+    for(let i = 0 ;i < test.length ; i++){
+      let numId = test[i].customerId;
+      let numGet = numId;
+        if(max < numGet){
+            max = numGet ;
+        }
+    }
+    max = max+1;
+    this.appService.addCustomer( max,this.signupForm.value.userData.Name , this.signupForm.value.userData.Age);
+    this.signupForm.reset();
   }
-
 }
+

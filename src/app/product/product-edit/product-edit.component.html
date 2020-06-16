@@ -1,1 +1,54 @@
-<p>product-edit works!</p>
+
+        <div class="col-md-12">
+            <h3>{{isAddMode ? 'Add' : 'Edit'}} Customer</h3>
+
+    <div *ngIf="!isAddMode">
+        <div>
+            <div>
+                <label>ProductId :</label>
+                <label >{{productEdit.ProductId}}</label>
+            </div>
+            <div>
+                <label>Name :</label>
+                <input type="text" [(ngModel)]="productEdit.Name"><br>
+            </div>
+            <div>
+                <label>Price :</label>
+                <input type="number" [(ngModel)]="productEdit.Price" ><br>
+            </div>
+            <button class="btn btn-danger" (click)="onEditProduct()">Submit Edit Product !</button>
+            <button routerLink="/product">  Product </button>
+        </div>
+    </div>
+
+
+<div *ngIf="isAddMode" class="form-group" class="col-xs-20">
+    <form (ngSubmit)="onClickSubmit(f)" #f="ngForm">
+        <div class="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+            <div class="form-group">
+                <label>ProductId :</label>
+                <!-- <input type="number" id="ProductId" class="from-control" ngModel name="ProductId" required><br> -->
+            </div>
+            <div class="form-group">
+                <label>Name :</label>
+                <input type="text" id="Name" class="from-control" ngModel name="Name" required><br>
+
+            </div>
+            <div class="form-group">
+                <label>Price :</label>
+                <input type="number" id="Price" class="from-control" ngModel name="Price" required><br>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
+            Submit Create Product !
+        </button>
+        <button routerLink="/product">Product List</button>
+
+    </form>
+
+</div>
+
+{{ productEdit | json}}
+<hr />
+{{getProductCheckId | json}}
+        </div>
