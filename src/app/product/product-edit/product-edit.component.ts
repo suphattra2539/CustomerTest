@@ -10,32 +10,28 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductEditComponent implements OnInit {
   public isAddMode: boolean = false;
-  producrId : any ;
-  
-  productEdit : Product;
-  product : Product;
+  producrId: any;
+
+  product: Product;
 
   constructor(private appService: AppService,
-              private activeRoute: ActivatedRoute) { }
+    private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     let queryParam = this.activeRoute.snapshot.queryParams;
     this.isAddMode = queryParam == null || queryParam.id == 0;
     this.producrId = +queryParam.id;
 
-    let result = this.appService.getProductEdit(this.producrId);
-    if(result != null){
-      this.product = result;
-      this.productEdit = {...result};
-    }else{
-      this.product = new Product();
-    }
+    this.appService.getProduct(this.producrId).subscribe((data: any) => {
+      this.product = data;
+      console.log("product : " +this.product);
+    });
   }
   onEditProduct() {
-    this.appService.updateProduct(this.productEdit.ProductId ,this.productEdit.Name , this.productEdit.Price);
+    this.appService.updateProduct(this.product.productID, this.product.name, this.product.price);
   }
   onClickSubmit() {
-    this.appService.addProduct(this.product.Name , this.product.Price);
+    this.appService.addProduct(this.product.name, this.product.price);
   }
 
 }

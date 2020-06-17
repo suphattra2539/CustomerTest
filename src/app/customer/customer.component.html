@@ -9,13 +9,13 @@
                 <div class="row">
 
                     <div class="col-xs-6">
-                        <p *ngFor="let customer of customers">
-                            {{ customer.customerId }}
-                            {{ customer.Name }}
-                            {{ customer.Age }}
+                        <p *ngFor="let customerServiceHttp of customerServiceHttp">
+                            {{ customerServiceHttp.id }}
+                            {{ customerServiceHttp.name }}
+                            {{ customerServiceHttp.age }}
                             <button class="button" routerLink="/customer-edit" class="btn btn-warning"
-                                [queryParams]="{ id: customer.customerId }">Edit</button>
-                            <button (click)="onDeleteCustomer(customer)" class="btn btn-danger">Delete Customer</button>
+                                [queryParams]="{ id:  customerServiceHttp.id }">Edit</button>
+                            <button (click)="onDeleteCustomer(customerServiceHttp.id)" class="btn btn-danger">Delete Customer</button>
                         </p>
                     </div>
                 </div>
@@ -23,3 +23,4 @@
         </div>
     </div>
 </div>
+<hr />

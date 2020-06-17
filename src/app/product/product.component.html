@@ -13,11 +13,11 @@
 
                             <div class="col-xs-6">
                                 <p *ngFor="let productGet of productGet">
-                                    {{ productGet.ProductId }}
-                                    {{ productGet.Name }}
-                                    {{ productGet.Price }}
+                                    {{ productGet.productID }}
+                                    {{ productGet.name }}
+                                    {{ productGet.price }}
                                     <button  routerLink="/product-edit"
-                                        [queryParams]="{ id: productGet.ProductId }" class="btn btn-danger">Edit</button>
+                                        [queryParams]="{ id: productGet.productID }" class="btn btn-danger">Edit</button>
                                 </p>
                             </div>
                         </div>
@@ -30,3 +30,4 @@
 
 
 </div>
+{{productGet| json}}
