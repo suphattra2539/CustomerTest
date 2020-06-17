@@ -1,17 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { ActivatedRoute } from '@angular/router';
 import { Customer } from 'src/app/models/customer';
-
 @Component({
   selector: 'app-customer-edit',
   templateUrl: './customer-edit.component.html',
   styleUrls: ['./customer-edit.component.css']
 })
 export class CustomerEditComponent implements OnInit {
-  @ViewChild('f', { static: false }) signupForm: NgForm;
   public isAddMode: boolean = false;
   public customerId: any;
 
@@ -23,9 +19,7 @@ export class CustomerEditComponent implements OnInit {
   getCustomerCheckMax;
   ngOnInit() {
     this.getCustomerCheckMax = this.appService.customers;
-
     let queryParam = this.activeRoute.snapshot.queryParams;
-
     this.isAddMode = queryParam == null || queryParam.id == 0;
     this.customerId = +queryParam.id;
 

@@ -18,11 +18,11 @@
             <input *ngIf="customerId == 0"  type="number"[(ngModel)]="customer.Age" required><br>
         </div>
     </div>
-    <button  *ngIf="customerId != 0" class="btn btn-danger" (click)="onEditCustomet()">Submit Edit Customer !</button>
-    <button *ngIf="customerId == 0"  class="btn btn-primary" (click)="onClickSubmit()" >
+    <button class="button"  *ngIf="customerId != 0" class="btn btn-danger" (click)="onEditCustomet()">Submit Edit Customer !</button>
+    <button class="button" *ngIf="customerId == 0"  class="btn btn-primary" (click)="onClickSubmit()" >
         Submit Create Customer !
     </button>
-    &nbsp;
+   
     <button routerLink="/customer" class="btn btn-dark">Customer</button>
 
 </div> 

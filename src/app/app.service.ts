@@ -24,8 +24,6 @@ export class AppService {
         { ProductId: 4, Name: 'ssss', Price: 27 }
     ];
 
-    customerIdEdit: number;
-
     addCustomer(Name: string, Age: number) {
         let max = 0;
         for (let i = 0; i < this.customers.length; i++) {

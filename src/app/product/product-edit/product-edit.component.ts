@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -10,7 +9,6 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-  @ViewChild('f', { static: false }) signupForm: NgForm;
   public isAddMode: boolean = false;
   producrId : any ;
   

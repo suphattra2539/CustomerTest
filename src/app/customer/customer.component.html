@@ -3,7 +3,7 @@
         <div class="col-xs-12">
             <h3>customer works!</h3>
             <hr />
-                <button routerLink="/customer-edit" [queryParams]="{ id: '0'}" class="btn btn-light">Create Customer</button>
+                <button  routerLink="/customer-edit" [queryParams]="{ id: '0'}" class="btn btn-light">Create Customer</button>
             <hr>
             <div>
                 <div class="row">
@@ -13,7 +13,7 @@
                             {{ customer.customerId }}
                             {{ customer.Name }}
                             {{ customer.Age }}
-                            <button routerLink="/customer-edit" class="btn btn-warning"
+                            <button class="button" routerLink="/customer-edit" class="btn btn-warning"
                                 [queryParams]="{ id: customer.customerId }">Edit</button>
                             <button (click)="onDeleteCustomer(customer)" class="btn btn-danger">Delete Customer</button>
                         </p>

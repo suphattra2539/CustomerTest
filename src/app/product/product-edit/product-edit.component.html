@@ -16,9 +16,8 @@
             <input *ngIf="producrId == 0" type="number" [(ngModel)]="product.Price" required>
             <input *ngIf="producrId != 0" type="number" [(ngModel)]="productEdit.Price"><br>
         </div>
-        <button *ngIf="producrId == 0" class="btn btn-primary" (click)="onClickSubmit()"> Submit Create Product ! </button>
-        <button *ngIf="producrId != 0" class="btn btn-danger" (click)="onEditProduct()">Submit Edit Product !</button>
-         &nbsp;
+        <button class="button" *ngIf="producrId == 0" class="btn btn-primary" (click)="onClickSubmit()"> Submit Create Product ! </button>
+        <button class="button" *ngIf="producrId != 0" class="btn btn-danger" (click)="onEditProduct()">Submit Edit Product !</button>
         <button routerLink="/product" class="btn btn-dark"> Product </button>
     </div>
 </div>
