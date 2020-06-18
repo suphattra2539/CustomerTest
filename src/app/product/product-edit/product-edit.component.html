@@ -1,19 +1,19 @@
 <h3>{{isAddMode ? 'Add' : 'Edit'}} Product</h3>
 
-<div>
+<div *ngIf="products">
     <div>
         <div>
             <div >
                 <label>ProductId :</label>
-                <label >{{product.productID}}</label>
+                <label *ngIf="producrId != 0" >{{products.productID}}</label>
             </div>
             <div>
                 <label>Name :</label>
-                <input  type="text" [(ngModel)]="product.name">
+                <input  type="text" [(ngModel)]="products.name">
             </div>
             <div>
                 <label>Price :</label>
-                <input type="number" [(ngModel)]="product.price">
+                <input type="number" [(ngModel)]="products.price">
             </div>
         </div>
         <button class="button" *ngIf="producrId == 0" class="btn btn-primary" (click)="onClickSubmit()"> Submit Create

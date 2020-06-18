@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertComponent } from './component/modal/alert/alert.component';
+import { CustomerEditPopupComponent } from './customer/customer-edit-popup/customer-edit-popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { AlertComponent } from './component/modal/alert/alert.component';
     CustomerEditComponent,
     ProductEditComponent,
     TestModalComponent,
-    AlertComponent
+    AlertComponent,
+    CustomerEditPopupComponent
   ],
   imports: [
     BrowserModule,

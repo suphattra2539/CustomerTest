@@ -18,7 +18,7 @@ export class AlertComponent implements OnInit {
     };
     product : Product;
 
-  constructor( public dialogRef: MatDialogRef<AlertComponent>,
+  constructor(public dialogRef: MatDialogRef<AlertComponent>,
               private appService : AppService) {}
 
   ngOnInit() {

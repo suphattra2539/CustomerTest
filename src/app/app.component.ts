@@ -2,6 +2,7 @@ import { Component, ViewChild, TemplateRef, OnInit } from '@angular/core';
 import { AppService } from './app.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AlertComponent } from './component/modal/alert/alert.component';
+import { CustomerEditPopupComponent } from './customer/customer-edit-popup/customer-edit-popup.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -43,6 +44,8 @@ export class AppComponent implements OnInit {
    // dialogConfig.width = "600px";
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(AlertComponent, dialogConfig);
+
+    //const modalDialog2 = this.matDialog.open(CustomerEditPopupComponent, dialogConfig);
   }
 
 }

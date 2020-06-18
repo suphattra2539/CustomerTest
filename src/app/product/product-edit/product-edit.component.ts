@@ -10,12 +10,12 @@ import { Product } from 'src/app/models/product';
 })
 export class ProductEditComponent implements OnInit {
   public isAddMode: boolean = false;
-  producrId: any;
+  public producrId: any;
 
-  product: Product;
+  products:Product;
 
   constructor(private appService: AppService,
-    private activeRoute: ActivatedRoute) { }
+              private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     let queryParam = this.activeRoute.snapshot.queryParams;
@@ -23,15 +23,15 @@ export class ProductEditComponent implements OnInit {
     this.producrId = +queryParam.id;
 
     this.appService.getProduct(this.producrId).subscribe((data: any) => {
-      this.product = data;
-      console.log("product : " +JSON.stringify(this.product));
+      this.products = data;
+      console.log("get id  : " , this.products);
     });
   }
   onEditProduct() {
-    this.appService.updateProduct(this.product.productID, this.product.name, this.product.price);
+    this.appService.updateProduct(this.products.productID, this.products.name, this.products.price);
   }
   onClickSubmit() {
-    this.appService.addProduct(this.product.name, this.product.price);
+    this.appService.addProduct(this.products.name, this.products.price);
   }
 
 }
