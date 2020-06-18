@@ -24,7 +24,7 @@ export class ProductEditComponent implements OnInit {
 
     this.appService.getProduct(this.producrId).subscribe((data: any) => {
       this.product = data;
-      console.log("product : " +this.product);
+      console.log("product : " +JSON.stringify(this.product));
     });
   }
   onEditProduct() {

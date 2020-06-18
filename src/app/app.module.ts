@@ -8,24 +8,39 @@ import { CustomerComponent } from './customer/customer.component';
 import { ProductComponent } from './product/product.component';
 import { AppService } from './app.service';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
 import { ProductEditComponent } from './product/product-edit/product-edit.component';
 import { from } from 'rxjs';
+import { TestModalComponent } from './test-modal/test-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatDialogModule } from '@angular/material/dialog';
+// RECOMMENDED
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { AlertComponent } from './component/modal/alert/alert.component';
 @NgModule({
   declarations: [
     AppComponent,
     CustomerComponent,
     ProductComponent,
     CustomerEditComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    TestModalComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule 
+    HttpClientModule,
+    BrowserAnimationsModule ,
+    PopoverModule.forRoot(),
+    ModalModule.forRoot(),
+    MatDialogModule//
+    ,
   ],
   providers: [],
   bootstrap: [AppComponent]

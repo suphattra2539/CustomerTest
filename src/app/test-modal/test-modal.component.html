@@ -1,0 +1,100 @@
+<div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <ul>
+              <li ng-repeat="item in items">
+                <a ng-click="selected.item=item">sss</a>
+              </li>
+            </ul>
+            <div>Selected Item: sss</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="ok()">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+
+<!-- <p>test-modal works!</p>
+<button type="button" class="btn btn-warning" popover="Suphattra Sriphook.">Live demo</button>
+
+<br><br>
+<button type="button" class="btn btn-primary" popover="การแสดง popover ในรูปแบบธรรมาดาไม่มีส่วนหัว">แสดงผล</button>
+<br>-----------------------------------------------------------------------<br>
+<button type="button" class="btn btn-default btn-secondary"
+        popover="ส่วนเนื้อหา Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+        popoverTitle="ชื่อส่วนหัว "
+        placement="top">
+  Popover on top(ชื่อปุ่ม)
+</button>
+<p>Popover on top บน /  Popover on right ขวา /   Popover auto  /  Popover on left   ซ้าย/   Popover on bottom  ล่าง</p>
+<br><br>
+<select  class="btn btn-primary" [(ngModel)]="poppverButtonSet" >
+    <option  class="btn btn-warning" *ngFor="let poppverButton of poppverButton" >{{poppverButton}}</option>
+</select>&nbsp;
+<button 
+    type="button" 
+    class="btn btn-outline-warning"
+    popover="testttttttttttttttttttttttttttttt" 
+    popoverTitle="ลอง"  
+    placement="{{poppverButtonSet}}">
+แสดง</button> &nbsp;
+<button 
+    type="button" 
+    class="btn btn-warning"
+    popover="{{dataSet.name}}" 
+    popoverTitle="{{dataSet.title}}"  
+    placement="{{poppverButtonSet}}">
+แสดง</button>
+<br>----------------------------------------------------------------------------------------<br>
+<button type="button" class="btn btn-success btn-sm">ขนาดเล็ก</button><br>
+<button type="button" class="btn btn-warning btn-lg">ขนาดใหญ่</button><br>
+<button type="button" class="btn btn-primary btn-lg btn-block">เต็มพื้นที่</button><br>
+<button type="button" class="btn btn-info btn-lg active">ตามขนาดข้อความ</button><br>
+
+<p>---------------------------------------------</p>
+<button type="button" class="btn btn-success btn-sm"
+        popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+        popoverTitle="Popover on top"
+        [adaptivePosition]="false"
+        placement="top">
+        Popover on top หาความแตกต่างไม่เจอ
+</button>
+<p>----------------------------------------------</p>
+<button type="button" class="btn btn-success"
+        popover="{{dataSet.title}}"
+        popoverTitle="{{dataSet.name}}"
+        triggers="focus">
+  Dismissible popover ไม่สามารถกดปิดการแสดงได้ ยกเลิกได้จากการกดพื้นที่ด้านนอกของการใช้งาน
+</button>
+<p>------------------------------------------------</p>
+<button type="button" class="btn btn-info"
+        [popover]="dataSet.name" [popoverTitle]="dataSet.title">
+  การแสดงแบบดึงข้อมูลภายใน
+</button>
+<p>--------------------------------------------------</p>
+<ng-template #popTemplate>"กำหนดการแสดงจากส่วนนี้ เข้าไปเก็บในชื่อตัวแปรที่กำหนด แล้วเรียกข้อมูลจากชื่อตัวแปร": {{dataSet.name}}</ng-template>
+<button type="button" class="btn btn-warning"
+        [popover]="popTemplate" 
+        popoverTitle="Template ref content inside">
+        TemplateRef binding
+</button>
+<p>-----------------------------------------------------</p>
+
+<ng-template #popTemplate2>Here we go (2) : <div [innerHtml]="html"></div></ng-template>
+<button type="button" class="btn btn-success"
+        [popover]="popTemplate2" 
+        [popoverTitle]="dataSet.title">
+  Show me popover with html
+</button>&nbsp;
+<ng-template #popTemplate3>Here we go (2) : <div [innerHtml]="html2"></div></ng-template>
+<button type="button" class="btn btn-success"
+        [popover]="popTemplate3" 
+        [popoverTitle]="dataSet.title">
+  Show me popover with html
+</button>
+<p>------------------------------------------------------</p> -->

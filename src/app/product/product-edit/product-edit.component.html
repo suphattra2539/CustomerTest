@@ -3,19 +3,23 @@
 <div>
     <div>
         <div>
-            <label>ProductId :</label>
-            <label  *ngIf="producrId != 0">{{product.productID}}</label>
+            <div >
+                <label>ProductId :</label>
+                <label >{{product.productID}}</label>
+            </div>
+            <div>
+                <label>Name :</label>
+                <input  type="text" [(ngModel)]="product.name">
+            </div>
+            <div>
+                <label>Price :</label>
+                <input type="number" [(ngModel)]="product.price">
+            </div>
         </div>
-        <div>
-            <label>Name :</label>
-            <!-- <input  type="text" [(ngModel)]="product.name"> -->
-        </div>
-        <div>
-            <label>Price :</label>
-            <!-- <input type="number" [(ngModel)]="product.price"> -->
-        </div>
-        <button class="button" *ngIf="producrId == 0" class="btn btn-primary" (click)="onClickSubmit()"> Submit Create Product ! </button>
-        <button class="button" *ngIf="producrId != 0" class="btn btn-danger" (click)="onEditProduct()">Submit Edit Product !</button>
+        <button class="button" *ngIf="producrId == 0" class="btn btn-primary" (click)="onClickSubmit()"> Submit Create
+            Product ! </button>
+        <button class="button" *ngIf="producrId != 0" class="btn btn-danger" (click)="onEditProduct()">Submit Edit
+            Product !</button>
         <button routerLink="/product" class="btn btn-dark"> Product </button>
     </div>
 </div>

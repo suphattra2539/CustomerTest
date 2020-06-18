@@ -26,6 +26,12 @@ export class AppService {
         // { ProductId: 4, Name: 'ssss', Price: 27 }
     ];
     customerHttp : Customer;
+    products1:any= [
+        { productID: 1, name: 'cccc', price: 23 },
+        { productID: 2, name: 'xxxx', price: 30 },
+        { productID: 3, name: 'ffff', price: 27 },
+        { productID: 4, name: 'ssss', price: 27 }
+    ];
 
     addCustomer(Name: string, Age: number) {
        return this.http.post('http://localhost:44343/api/Customers',{Name: Name ,Age : Age});
@@ -97,5 +103,10 @@ export class AppService {
 
     callCUstomerHttp(getCustomers : any){
             console.log("vvvv" + JSON.stringify(getCustomers));
+    }
+
+    showData(template :any){
+        console.log(template);
+        return template ;
     }
 }

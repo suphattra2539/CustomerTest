@@ -4,3 +4,16 @@ backgroupCustomer {
 button{
     margin-right: 5px;
 }
+
+
+#logout-button {
+    color: white;
+    background-color: #16163f;
+    border: 1px solid black;
+}
+
+#delete-product-button {
+    color: white;
+    background-color: #145214;
+    border: 1px solid black;
+}
