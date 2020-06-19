@@ -11,7 +11,7 @@ import { CustomerEditPopupComponent } from './customer/customer-edit-popup/custo
 export class AppComponent implements OnInit {
   
   constructor(private appService : AppService,
-              public matDialog: MatDialog){
+              public matDialog: MatDialog,){
   }
   dataUpdate = {
     data : '',

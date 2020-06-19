@@ -1,22 +1,26 @@
 <div class="div">
     <div class="row">
         <div class="col-xs-12">
-            <h3>customer works!</h3>
+            <h3>customer List!</h3>
             <hr />
-                <button  routerLink="/customer-edit" [queryParams]="{ id: '0'}" class="btn btn-light">Create Customer</button>
+            <button (click)="createCustomer()" routerLink="/customer-edit" [queryParams]="{ id: '0'}" class="btn btn-light">Create 
+                Customer</button>
             <hr>
+            <!-- routerLink="/customer-edit" [queryParams]="{ id: '0'}" -->
             <div>
                 <div class="row">
 
-                    <div class="col-xs-6">
+                    <div class="col-xs-10">
                         <p *ngFor="let customerServiceHttp of customerServiceHttp">
                             {{ customerServiceHttp.id }}
                             {{ customerServiceHttp.name }}
                             {{ customerServiceHttp.age }}
                             <button class="button" routerLink="/customer-edit" class="btn btn-warning"
                                 [queryParams]="{ id:  customerServiceHttp.id }">Edit</button>
-                            <button (click)="onDeleteCustomer(customerServiceHttp.id)" class="btn btn-danger">Delete Customer</button>
-                            <button class="btn btn-mrimary" (click)="openModal(customerServiceHttp.id)">Click</button>
+                            <button (click)="onDeleteCustomer(deleteCustomer, customerServiceHttp.id)"
+                                class="btn btn-danger">Delete Customer</button>
+                            <button class="btn btn-info" (click)="openModal(template, customerServiceHttp.id)">Edit
+                                Customer Popup</button>
                         </p>
                     </div>
                 </div>
@@ -26,3 +30,30 @@
 </div>
 <hr />
 
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title" class="text-justify">Edit Customer !!</h4>
+    </div>
+    <div class="modal-body" style="align-items: center;">
+        <label>CustomerId : </label> <label>{{cusEditHttp.id}}</label>
+
+        <br><br>
+        <label>Name :</label> <input type="text" [(ngModel)]="cusEditHttp.name" />
+        <br><br>
+        <label>Age :</label> <input type="text" [(ngModel)]="cusEditHttp.age" />
+
+        <br><br><br>
+        <button type="button" class="btn btn-danger" (click)="actionFunction()"> Your Save changes Edit</button>&nbsp;
+    </div>
+</ng-template>
+<ng-template #deleteCustomer>
+    <div class="modal-hesader">
+        <h2>Yous Confim</h2>
+    </div>
+    <hr />
+    <footer >
+        <button style="align-content: center;" class="btn btn-success" (click)="actionFunctionDelete()">Ok</button>
+        <button class="btn btn-danger">Cen...</button>
+    </footer>
+<br>
+</ng-template>

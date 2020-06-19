@@ -1,18 +1,32 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { of } from 'rxjs';
 import { Customer } from './models/customer';
 import { Product } from './models/product';
 import { HttpClient } from '@angular/common/http';
 import { CookieXSRFStrategy } from '@angular/http';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+
+
+
 @Injectable({
     providedIn: 'root'
 })
 export class AppService {
+    private baseUrl : string;
+    private baseApi : string;
+
 
     constructor(private http: HttpClient,
-        public matDialog: MatDialog) { }
+       // @Inject('BASE_URL') baseUrl : string,
+       @Inject('BASE_API') baseApi : string//
+        ) 
+    { 
+       // this.baseUrl =  `${baseUrl}api/Account `;
+
+       // console.log("baseUrl   +" + this.baseUrl );
+        console.log("baseApi   : " + baseApi );
+        this.baseApi = baseApi ;
+    }
 
     customers: Customer[] = [
         // { customerId: 1, Name: 'Soo', Age: 23 },
@@ -36,12 +50,11 @@ export class AppService {
     ];
     cusEditHttp : Customer;
     addCustomer(Name: string, Age: number) {
-        return this.http.post('http://localhost:44343/api/Customers', { Name: Name, Age: Age });
+        return this.http.post(this.baseApi+'Customers', { Name: Name, Age: Age });
     }
 
     updateCustomer(id: number, name: string, age: number) {
-
-        return this.http.post('http://localhost:44343/api/Customers/' + id, { name: name, age: age });
+        return this.http.post(this.baseApi+'Customers/' + id, { name: name, age: age });
     }
     addProduct(Name: string, Price: number) {
         // let max = 0;
@@ -54,22 +67,22 @@ export class AppService {
         // this.products.push({ ProductId: max, Name: Name, Price: Price });
     }
     updateProduct(iD_Product: number, name_P: string, price_P: number) {
-        return this.http.post('http://localhost:44343/api/Products/' + iD_Product, { name_P: name_P, price_p: price_P });
+        return this.http.post(this.baseApi+'Products/' + iD_Product, { name_P: name_P, price_p: price_P });
     }
     getCustomer(customerId: any) {
-        return this.http.get('http://localhost:44343/api/Customers/' + customerId);
+        return this.http.get(this.baseApi+'Customers/' + customerId);
 
+    }
+    getAllCustomer(){
+        return this.http.get(this.baseApi+'Customers');
     }
     getCustomer2(customerId: any) {
-        this.http.get('http://localhost:44343/api/Customers/' + customerId).subscribe((data : any)=>{
+        this.http.get(this.baseApi+'Customers/' + customerId).subscribe((data : any)=>{
             this.cusEditHttp  = data;
-            this.getCustomer3();
-        })
+        });
+        
     }
-    getCustomer3(){
-        //this.cEditHttpP.getCustomrt( this.cusEditHttp);
-    }
-
+   
     getCustomerEdit(customerId: any) {
         let customer = this.customers.filter(custObj => custObj.customerId === customerId);
         console.log('service' + customer);
@@ -82,13 +95,13 @@ export class AppService {
     }
     getDeleteCustomer(custometDelete: any) {
         let id = JSON.stringify(custometDelete);
-        return this.http.delete('http://localhost:44343/api/Customers/' + id);
+        return this.http.delete(this.baseApi+'Customers/' + id);
 
 
     }
     getProduct(productId: any) {
         console.log("service  : " + productId);
-        return this.http.get('http://localhost:44343/api/Products/' + productId);
+        return this.http.get(this.baseApi+'Products/' + productId);
 
         // return of([{ ProductId: 1, Name: 'cccc', Price: 23 },
         // { ProductId: 2, Name: 'xxxx', Price: 30 },

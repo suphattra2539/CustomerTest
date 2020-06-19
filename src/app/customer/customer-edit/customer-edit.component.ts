@@ -15,7 +15,7 @@ export class CustomerEditComponent implements OnInit {
   customer: Customer;
   customerEdit: Customer;
   constructor(private appService: AppService,
-    private activeRoute: ActivatedRoute) {
+              private activeRoute: ActivatedRoute) {
   }
   getCustomerCheckMax;
   ngOnInit() {

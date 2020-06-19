@@ -21,6 +21,12 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertComponent } from './component/modal/alert/alert.component';
 import { CustomerEditPopupComponent } from './customer/customer-edit-popup/customer-edit-popup.component';
+
+// ...
+import { DxButtonModule , DxListModule, DxDataGridModule } from 'devextreme-angular';
+import { CustomerGridComponent } from './customer-grid/customer-grid.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +36,8 @@ import { CustomerEditPopupComponent } from './customer/customer-edit-popup/custo
     ProductEditComponent,
     TestModalComponent,
     AlertComponent,
-    CustomerEditPopupComponent
+    CustomerEditPopupComponent,
+    CustomerGridComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,10 +48,15 @@ import { CustomerEditPopupComponent } from './customer/customer-edit-popup/custo
     BrowserAnimationsModule ,
     PopoverModule.forRoot(),
     ModalModule.forRoot(),
-    MatDialogModule//
-    ,
+    MatDialogModule,
+    DxListModule,
+    DxButtonModule,
+  DxDataGridModule
   ],
-  providers: [],
+  providers: [ 
+   // { provide: 'BASE_URL', useFactory: getBaseUrl },
+   // { provide: 'BASE_URL', useFactory: getBaseUrl }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
