@@ -51,7 +51,7 @@ import { CustomerGridComponent } from './customer-grid/customer-grid.component';
     MatDialogModule,
     DxListModule,
     DxButtonModule,
-  DxDataGridModule
+    DxDataGridModule
   ],
   providers: [ 
    // { provide: 'BASE_URL', useFactory: getBaseUrl },

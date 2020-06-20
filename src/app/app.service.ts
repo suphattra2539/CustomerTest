@@ -48,6 +48,13 @@ export class AppService {
         { productID: 3, name: 'ffff', price: 27 },
         { productID: 4, name: 'ssss', price: 27 }
     ];
+
+    rowData = [
+        { make: 'Toyota', model: 'Celica', price: 35000 },
+        { make: 'Ford', model: 'Mondeo', price: 32000 },
+        { make: 'Porsche', model: 'Boxter', price: 72000 },
+        { make: 'Porsche2', model: 'Boxter', price: 75000 }
+      ];
     cusEditHttp : Customer;
     addCustomer(Name: string, Age: number) {
         return this.http.post(this.baseApi+'Customers', { Name: Name, Age: Age });
@@ -133,5 +140,18 @@ export class AppService {
     showData(template: any) {
         console.log(template);
         return template;
+    }
+
+    updateMake(make : string , model : string , price : number){
+        let data : any
+         for(let i = 0 ; i < this.rowData.length ; i++){
+            if(this.rowData[i].make == make){
+                this.rowData[i].model = model;
+                this.rowData[i].price = price;
+               // return this.rowData;
+            }
+        } 
+       
+       
     }
 }
