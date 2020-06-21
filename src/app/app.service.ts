@@ -50,10 +50,38 @@ export class AppService {
     ];
 
     rowData = [
-        { make: 'Toyota', model: 'Celica', price: 35000 },
-        { make: 'Ford', model: 'Mondeo', price: 32000 },
-        { make: 'Porsche', model: 'Boxter', price: 72000 },
-        { make: 'Porsche2', model: 'Boxter', price: 75000 }
+        { make: '1Toyota', model: 'Celica', price: 35000 },
+        { make: '2Ford', model: 'Mondeo', price: 32000 },
+        { make: '3Porsche', model: 'Boxter', price: 72000 },
+        { make: '4Porsche2', model: 'Boxter', price: 75000 },
+        { make: '5Toyota', model: 'Celica', price: 35000 },
+        { make: '6Ford', model: 'Mondeo', price: 32000 },
+        { make: '7Porsche', model: 'Boxter', price: 72000 },
+        { make: '8Porsche2', model: 'Boxter', price: 75000 },
+        { make: '9Toyota', model: 'Celica', price: 35000 },
+        { make: '10Ford', model: 'Mondeo', price: 32000 },
+        { make: '11Porsche', model: 'Boxter', price: 72000 },
+        { make: '12Porsche2', model: 'Boxter', price: 75000 },
+        { make: '13Toyota', model: 'Celica', price: 35000 },
+        { make: '14Ford', model: 'Mondeo', price: 32000 },
+        { make: '15Porsche', model: 'Boxter', price: 72000 },
+        { make: '16Porsche2', model: 'Boxter', price: 75000 },
+        { make: '17Toyota', model: 'Celica', price: 35000 },
+        { make: '18Ford', model: 'Mondeo', price: 32000 },
+        { make: '19Porsche', model: 'Boxter', price: 72000 },
+        { make: '20Porsche2', model: 'Boxter', price: 75000 },
+        { make: '21Toyota', model: 'Celica', price: 35000 },
+        { make: '22Ford', model: 'Mondeo', price: 32000 },
+        { make: '23Porsche', model: 'Boxter', price: 72000 },
+        { make: '24Porsche2', model: 'Boxter', price: 75000 },
+        { make: '25Toyota', model: 'Celica', price: 35000 },
+        { make: '26Ford', model: 'Mondeo', price: 32000 },
+        { make: '27Porsche', model: 'Boxter', price: 72000 },
+        { make: '28Porsche2', model: 'Boxter', price: 75000 },
+        { make: '29Toyota', model: 'Celica', price: 35000 },
+        { make: '30Ford', model: 'Mondeo', price: 32000 },
+        { make: '31Porsche', model: 'Boxter', price: 72000 },
+        { make: '32Porsche2', model: 'Boxter', price: 75000 }
       ];
     cusEditHttp : Customer;
     addCustomer(Name: string, Age: number) {
